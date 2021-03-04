@@ -1,2 +1,2 @@
-ClientId and Secret must be obtained from bisnode.
+ClientId and ClientSecret must be obtained from bisnode.
 
