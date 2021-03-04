@@ -1,0 +1,18 @@
+
+microservice:
+  accesslogs.enabled: off
+  oauth2:
+    token:
+      endpoint: https://login.bisnode.com/as/token.oauth2
+      clientid:
+      clientsecret:
+      exchange:
+        endpoint: https://login.bisnode.com/pf/sts.wst
+      publickey:
+        x509:
+          endpoint: https://login.bisnode.com/ext/oauth/x509/kid
+authentication:
+  grant-type: client_credentials
+  scope: bci
+freg:
+  base-url: https://api.bisnode.com/consumerintelligence/person/v2/person/match
