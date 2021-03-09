@@ -15,6 +15,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class BciFacade {
 
     private WebClient webClient;
+    private final static String authorization = "Authorization";
+    private final static String bearer = "Bearer";
 
     public BciFacade(String url) {
         ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
@@ -26,10 +28,10 @@ public class BciFacade {
                 .build();
     }
 
-    public ResponseEntity<Root> getPersonOppslagBulk(Queries queries, String token) throws JsonProcessingException {
+    public ResponseEntity<Root> getPersonOppslagBulk(Queries queries, String machineToken) throws JsonProcessingException {
         return webClient.post()
                 .body(BodyInserters.fromValue(queries))
-                .header("Authorization","Bearer "+ token)
+                .header(authorization,bearer + " " + machineToken)
                 .retrieve()
                 .toEntity(Root.class)
                 .block();
