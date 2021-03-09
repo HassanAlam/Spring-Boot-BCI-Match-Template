@@ -1,4 +1,4 @@
-package com.bci.matchclient.http;
+package com.bci.matchclient.authenticate;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

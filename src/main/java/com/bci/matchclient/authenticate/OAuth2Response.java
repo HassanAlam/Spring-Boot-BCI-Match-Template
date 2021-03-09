@@ -1,4 +1,4 @@
-package com.bci.matchclient.http;
+package com.bci.matchclient.authenticate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

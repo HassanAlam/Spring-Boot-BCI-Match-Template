@@ -1,8 +1,8 @@
 package com.bci.matchclient;
 
-import com.bci.matchclient.http.HttpAuthenticate;
-import com.bci.matchclient.http.HttpRequest;
-import com.bci.matchclient.http.OAuth2Response;
+import com.bci.matchclient.authenticate.HttpAuthenticate;
+import com.bci.matchclient.facade.BciFacade;
+import com.bci.matchclient.authenticate.OAuth2Response;
 import com.bci.matchclient.model.Root;
 import com.bci.matchclient.requestmodel.Queries;
 import com.bci.matchclient.requestmodel.Query;
@@ -59,8 +59,8 @@ public class Start implements CommandLineRunner {
         addToQueryList(queries);
         Queries queries1 = new Queries(queries);
 
-        HttpRequest httpRequest = new HttpRequest(baseUrl);
-        ResponseEntity<Root> response = httpRequest.getPersonOppslagBulk(queries1, oAuth2Response.getAccess_token());
+        BciFacade bciFacade = new BciFacade(baseUrl);
+        ResponseEntity<Root> response = bciFacade.getPersonOppslagBulk(queries1, oAuth2Response.getAccess_token());
 
         //print
         System.out.println(response.getBody().matchResponses.get(0).matchCandidates.get(0).person.familyName);

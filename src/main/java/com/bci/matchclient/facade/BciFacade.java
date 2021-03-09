@@ -1,4 +1,4 @@
-package com.bci.matchclient.http;
+package com.bci.matchclient.facade;
 
 import com.bci.matchclient.model.Root;
 import com.bci.matchclient.requestmodel.Queries;
@@ -12,11 +12,11 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Slf4j
-public class HttpRequest {
+public class BciFacade {
 
     private WebClient webClient;
 
-    public HttpRequest(String url) {
+    public BciFacade(String url) {
         ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(5_000_000)).build();
         this.webClient = WebClient.builder()
