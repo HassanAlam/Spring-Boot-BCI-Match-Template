@@ -50,7 +50,7 @@ public class Start implements CommandLineRunner {
 
         //Get access token, or refresh existing token if it expires in less than 20 minutes
         if (getAccessTokenOrRefresh()) {
-            if (getToken()) return;
+            refreshToken();
         } else {
             displayStatus("Using existing access token");
         }
@@ -78,7 +78,7 @@ public class Start implements CommandLineRunner {
         queries.add(query);
     }
 
-    private boolean getToken() {
+    private void refreshToken() {
         displayStatus("Getting new access token..");
         HttpAuthenticate httpManager = new HttpAuthenticate(authenticationUrl);
         try {
@@ -94,9 +94,7 @@ public class Start implements CommandLineRunner {
             }
         } catch (Exception e) {
             log.error("Error getting access token: {}", e.getMessage());
-            return true;
         }
-        return false;
     }
 
     private boolean getAccessTokenOrRefresh() {
